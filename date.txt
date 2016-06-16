@@ -1,0 +1,61 @@
+Date Object:-
+1) The Date object is used to work with dates and times.
+2) Date objects are created with new Date().
+3) There are four ways of instantiating a date.
+
+	1) var d = new Date(); //No Argument − With no arguments, the Date() constructor creates a Date object set to the current date and time.
+
+	2)var d = new Date(milliseconds); //milliseconds − When one numeric argument is passed, it is taken as the internal numeric representation of the date in milliseconds, as returned by the getTime() method. For example, passing the argument 5000 creates a date that represents five seconds past midnight on 1/1/70.
+
+	3) var d = new Date(dateString); //datestring − When one string argument is passed, it is a string representation of a date, in the format accepted by the Date.parse() method.
+
+	4) var d = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+
+	-----------------------------------------------------------------------------------------------------------
+	exp:-
+	  	1)  var Jan02_1970 = new Date(3600*24*1000)
+			alert( Jan02_1970 )
+
+		2) new Date(2011, 0, 1, 2, 3, 4, 567) // 1 Jan 2011, 02:03:04.567 in local timezone	
+
+		Javascript Date Formattin
+		=========================
+
+		1) toString() –  Converts a Javascript Date object to a string
+
+		2) toDateString() – Converts the date portion of a Javascript Date object into a readable string
+
+		3) toTimeString() – Converts the time portion of a Javascript Date object to a string
+
+		4) toJSON() – Returns the date as a string, formatted as a JSON date
+		-----------------------------------------------------------------------------------------------------
+		Note :- moment.js is an library which is build for date manipulation.
+
+
+	exp:-
+	
+	 $('.InviteLaterDone').click(function() {
+      var inviteDate = $.trim($('#datepicker').val());
+      var inviteHours = $.trim($('#hours').val());
+      var inviteMinutes = $.trim($('#minutes').val());
+      var inviteTimeZone = $.trim($('#timeZone').val());
+      if( (inviteDate.length) && (inviteHours.length) && (inviteMinutes.length)) {
+        var timeTxt = inviteHours + ":" + inviteMinutes + inviteTimeZone.toLowerCase();
+        var timeOfInvitation = new Date(formatToDDMMYYYY(inviteDate) + ' ' + convertTo24Hour(timeTxt));
+        var currentDateTime = new Date();
+        if(timeOfInvitation > currentDateTime) {
+          return true;
+        } else {
+          alert('Invitation must be future Date');
+          return false;
+        }
+      } else {
+        alert('Date and Time are Required Fields');
+        return false;
+      }
+  });
+
+  function formatToDDMMYYYY(inputDate) {
+    var date = new Date(inputDate);
+    return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+}	

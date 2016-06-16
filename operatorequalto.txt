@@ -1,0 +1,19 @@
+
+var x =5;
+x == 8 	 //false 	
+x == 5 	 //true 	
+x == "5" //true
+x != 8 	//true
+
+
+x === 5 	//true 	
+x === "5" 	//false
+x !== 5 	//false 	
+x !== "5" 	//true 	
+x !== 8 	/true
+
+if (typeof x === 'string'){
+	return false;
+}else{
+	return true;
+}
